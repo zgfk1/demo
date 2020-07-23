@@ -1,0 +1,59 @@
+{
+  "properties": [
+    {
+      "name": "spring.datasource.druid.stat.log-slow-sql",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.druid.stat.log-slow-sql."
+    },
+    {
+      "name": "spring.datasource.druid.stat.slow-sql-millis",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.druid.stat.slow-sql-millis."
+    },
+    {
+      "name": "db.conn.str",
+      "type": "java.lang.String",
+      "description": "Description for db.conn.str."
+    },
+    {
+      "name": "db.datasource.db1.jdbc-url.jdbc",
+      "type": "java.lang.String",
+      "description": "Description for db.datasource.db1.jdbc-url.jdbc."
+    },
+    {
+      "name": "db.datasource.db1.jdbc-url.username",
+      "type": "java.lang.String",
+      "description": "Description for db.datasource.db1.jdbc-url.username."
+    },
+    {
+      "name": "db.datasource.db1.jdbc-url.password",
+      "type": "java.lang.String",
+      "description": "Description for db.datasource.db1.jdbc-url.password."
+    },
+    {
+      "name": "db.datasource.db1.jdbc-url.driver-class-name",
+      "type": "java.lang.String",
+      "description": "Description for db.datasource.db1.jdbc-url.driver-class-name."
+    },
+    {
+      "name": "db.datasource.db2.jdbc-url.jdbc",
+      "type": "java.lang.String",
+      "description": "Description for db.datasource.db2.jdbc-url.jdbc."
+    },
+    {
+      "name": "db.datasource.db2.jdbc-url.username",
+      "type": "java.lang.String",
+      "description": "Description for db.datasource.db2.jdbc-url.username."
+    },
+    {
+      "name": "db.datasource.db2.jdbc-url.password",
+      "type": "java.lang.String",
+      "description": "Description for db.datasource.db2.jdbc-url.password."
+    },
+    {
+      "name": "db.datasource.db2.jdbc-url.driver-class-name",
+      "type": "java.lang.String",
+      "description": "Description for db.datasource.db2.jdbc-url.driver-class-name."
+    }
+  ]
+}

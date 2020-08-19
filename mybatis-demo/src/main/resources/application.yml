@@ -46,6 +46,7 @@ logging:
     com.burst.sedin.mapper: DEBUG
     jdbc.sqltiming: DEBUG
 mybatis:
+  type-aliases-package: com.example.demo.entity
   # 指定全局配置文件位置
   config-location: classpath:mybatis/mybatis-config.xml
   # 指定sql映射文件位置

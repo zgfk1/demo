@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.UserInfo;
+import com.example.demo.entity.UserInfoUserRole;
 
 import java.util.List;
 
@@ -54,4 +55,6 @@ public interface UserInfoService {
     boolean deleteById(Integer id);
 
     UserInfo updateUserInfo(Integer id);
+
+    UserInfoUserRole selectUserInfoById(Integer id);
 }

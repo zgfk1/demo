@@ -2,6 +2,7 @@ package com.example.demo.service.impl;
 
 import com.example.demo.dao.UserInfoDao;
 import com.example.demo.entity.UserInfo;
+import com.example.demo.entity.UserInfoUserRole;
 import com.example.demo.service.UserInfoService;
 import org.springframework.stereotype.Service;
 
@@ -81,5 +82,17 @@ public class UserInfoServiceImpl implements UserInfoService {
     public UserInfo updateUserInfo(Integer id) {
 
         return this.userInfoDao.updateUserInfo(id);
+    }
+
+
+    @Override
+    public UserInfoUserRole selectUserInfoById(Integer id) {
+
+        try {
+            return this.userInfoDao.selectUserInfoById(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

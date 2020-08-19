@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.UserInfo;
+import com.example.demo.entity.UserInfoUserRole;
 import com.example.demo.service.UserInfoService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -41,6 +42,8 @@ public class UserInfoController {
         return this.userInfoService.updateUserInfo(id);
     }
 
-
-
+    @GetMapping("selectUserInfoById")
+    public UserInfoUserRole selectUserInfoById(Integer id){
+        return this.userInfoService.selectUserInfoById(id);
+    }
 }

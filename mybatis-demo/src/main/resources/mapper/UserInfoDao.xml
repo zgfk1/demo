@@ -30,8 +30,8 @@
         <result property="createTime" column="create_time" jdbcType="VARCHAR"/>
         <result property="createUser" column="create_user" jdbcType="VARCHAR"/>
         <result property="updateTime" column="update_time" jdbcType="VARCHAR"/>
-        <result property="updateUser" column="update_user" jdbcType="VARCHAR"/>
-
+        <result property="updateUser" column="update_user" jdbcType="VARCHAR" />
+<!--typeHandler="org.apache.ibatis.type.EnumTypeHandler" -->
         <collection property="userRoles" javaType="java.util.List" ofType="com.example.demo.entity.UserRole">
             <!-- 定义这个集合中元素的封装规则 -->
             <result property="userId" column="USER_ID"/>
@@ -322,4 +322,177 @@
 
     </update>
 
+
+
+
+
+
+    <select id="selectUserInfoById" resultMap="blogResult">
+        select a.id,
+               a.user_num,
+               a.full_name,
+               a.gender,
+               a.nationality,
+               a.id_card,
+               a.birthday,
+               a.political_status,
+               a.in_party_time,
+               a.telephone,
+               a.employ_time_cop,
+               a.employ_time_dept,
+               a.major,
+               a.team,
+               a.professioanl_title,
+               a.title_time,
+               a.design_qualification,
+               a.position_status,
+               a.position_start_time,
+               a.position_end_time,
+               a.post_title,
+               a.tutor,
+               a.order_num,
+               a.status,
+               a.create_time,
+               a.create_user,
+               a.update_time,
+               a.update_user<!--,
+               b.USER_ID,
+               b.ROLE_ID,
+               b.PROJECT_ID-->
+        from office.user_info a
+                <!-- left join user_role b on a.id = b.USER_ID-->
+        where a.id = #{id}
+    </select>
+
+    <resultMap id="blogResult" type="com.example.demo.entity.UserInfoUserRole">
+        <id property="id" column="id" />
+        <result property="userNum" column="user_num" jdbcType="VARCHAR"/>
+        <result property="fullName" column="full_name" jdbcType="VARCHAR"/>
+        <result property="gender" column="gender" jdbcType="VARCHAR"/>
+        <result property="nationality" column="nationality" jdbcType="VARCHAR"/>
+        <result property="idCard" column="id_card" jdbcType="VARCHAR"/>
+        <result property="birthday" column="birthday" jdbcType="VARCHAR"/>
+        <result property="politicalStatus" column="political_status" jdbcType="VARCHAR"/>
+        <result property="inPartyTime" column="in_party_time" jdbcType="VARCHAR"/>
+        <result property="telephone" column="telephone" jdbcType="VARCHAR"/>
+        <result property="employTimeCop" column="employ_time_cop" jdbcType="VARCHAR"/>
+        <result property="employTimeDept" column="employ_time_dept" jdbcType="VARCHAR"/>
+        <result property="major" column="major" jdbcType="VARCHAR"/>
+        <result property="team" column="team" jdbcType="VARCHAR"/>
+        <result property="professioanlTitle" column="professioanl_title" jdbcType="VARCHAR"/>
+        <result property="titleTime" column="title_time" jdbcType="VARCHAR"/>
+        <result property="designQualification" column="design_qualification" jdbcType="VARCHAR"/>
+        <result property="positionStatus" column="position_status" jdbcType="VARCHAR"/>
+        <result property="positionStartTime" column="position_start_time" jdbcType="VARCHAR"/>
+        <result property="positionEndTime" column="position_end_time" jdbcType="VARCHAR"/>
+        <result property="postTitle" column="post_title" jdbcType="VARCHAR"/>
+        <result property="tutor" column="tutor" jdbcType="VARCHAR"/>
+        <result property="orderNum" column="order_num" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="VARCHAR"/>
+        <result property="createUser" column="create_user" jdbcType="VARCHAR"/>
+        <result property="updateTime" column="update_time" jdbcType="VARCHAR"/>
+        <result property="updateUser" column="update_user" jdbcType="VARCHAR" />
+
+        <collection property="userRoles" ofType="com.example.demo.entity.UserRole"
+        select="com.example.demo.dao.UserRoleDao.queryById" column="id" >
+            <!-- 定义这个集合中元素的封装规则 -->
+            <result property="userId" column="USER_ID"/>
+            <result property="roleId" column="ROLE_ID"/>
+            <result property="projectId" column="PROJECT_ID"/>
+        </collection>
+        <!--<association property="userRoles" column="id"
+                     javaType="com.example.demo.entity.UserRole"
+                     resultMap="authorResult"/>-->
+    </resultMap>
+
+    <resultMap id="authorResult" type="com.example.demo.entity.UserRole">
+        <result property="userId" column="USER_ID" jdbcType="VARCHAR"/>
+        <result property="roleId" column="ROLE_ID" jdbcType="VARCHAR"/>
+        <result property="projectId" column="PROJECT_ID" jdbcType="INTEGER"/>
+    </resultMap>
+   <!-- <resultMap type="com.example.demo.entity.UserInfo" id="MyUserInfo">
+        <id column="id" property="id"/>
+        <id column="role_id" property="roleId"/>
+
+        <collection property="userRoles"
+                    select="com.example.demo.dao.UserRoleDao.queryAll"
+                    column="{userId=id}" fetchType="lazy"/>
+    </resultMap>
+
+    &lt;!&ndash; public Department getDeptByIdStep(Integer id); &ndash;&gt;
+    <select id="getUserInfoById" resultMap="MyUserInfo">
+        select id,role_id  from office.user_info where id=#{id}
+    </select>-->
+
+  <!--  <select id="selectBlogDetails" resultMap="detailedBlogResultMap">
+        select
+            B.id as blog_id,
+            B.title as blog_title,
+            B.author_id as blog_author_id,
+            A.id as author_id,
+            A.username as author_username,
+            A.password as author_password,
+            A.email as author_email,
+            A.bio as author_bio,
+            A.favourite_section as author_favourite_section,
+            P.id as post_id,
+            P.blog_id as post_blog_id,
+            P.author_id as post_author_id,
+            P.created_on as post_created_on,
+            P.section as post_section,
+            P.subject as post_subject,
+            P.draft as draft,
+            P.body as post_body,
+            C.id as comment_id,
+            C.post_id as comment_post_id,
+            C.name as comment_name,
+            C.comment as comment_text,
+            T.id as tag_id,
+            T.name as tag_name
+        from Blog B
+                 left outer join Author A on B.author_id = A.id
+                 left outer join Post P on B.id = P.blog_id
+                 left outer join Comment C on P.id = C.post_id
+                 left outer join Post_Tag PT on PT.post_id = P.id
+                 left outer join Tag T on PT.tag_id = T.id
+        where B.id = #{id}
+    </select>
+
+    <resultMap id="detailedBlogResultMap" type="Blog">
+        <constructor>
+            <idArg column="blog_id" javaType="int"/>
+        </constructor>
+
+        <result property="title" column="blog_title"/>
+
+        <association property="author" javaType="Author">
+            <id property="id" column="author_id"/>
+            <result property="username" column="author_username"/>
+            <result property="password" column="author_password"/>
+            <result property="email" column="author_email"/>
+            <result property="bio" column="author_bio"/>
+            <result property="favouriteSection" column="author_favourite_section"/>
+        </association>
+
+        <collection property="posts" ofType="Post">
+            <id property="id" column="post_id"/>
+            <result property="subject" column="post_subject"/>
+
+            <association property="author" javaType="Author"/>
+
+            <collection property="comments" ofType="Comment">
+                <id property="id" column="comment_id"/>
+            </collection>
+
+            <collection property="tags" ofType="Tag" >
+                <id property="id" column="tag_id"/>
+            </collection>
+
+            <discriminator javaType="int" column="draft">
+                <case value="1" resultType="DraftPost"/>
+            </discriminator>
+
+        </collection>
+    </resultMap>-->
 </mapper>

@@ -64,4 +64,6 @@ public interface UserRoleDao {
     int deleteById();
 
     int updateUserRole(@Param("userRoleList") List<UserRole> userRoleList);
+
+    UserRole getUserInfoById( UserRole userRoleList);
 }

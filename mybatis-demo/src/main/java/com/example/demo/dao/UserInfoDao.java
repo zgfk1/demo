@@ -1,9 +1,11 @@
 package com.example.demo.dao;
 
 import com.example.demo.entity.UserInfo;
+import com.example.demo.entity.UserInfoUserRole;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * (UserInfo)表数据库访问层
@@ -64,4 +66,7 @@ public interface UserInfoDao {
     int deleteById(Integer id);
 
     UserInfo updateUserInfo(Integer id);
+
+
+    UserInfoUserRole selectUserInfoById(@Param("id") Integer id);
 }

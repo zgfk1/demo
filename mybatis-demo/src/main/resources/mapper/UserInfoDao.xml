@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.UserInfoDao">
+
+    <resultMap type="com.example.demo.entity.UserInfo" id="UserInfoMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="userNum" column="user_num" jdbcType="VARCHAR"/>
+        <result property="fullName" column="full_name" jdbcType="VARCHAR"/>
+        <result property="gender" column="gender" jdbcType="VARCHAR"/>
+        <result property="nationality" column="nationality" jdbcType="VARCHAR"/>
+        <result property="idCard" column="id_card" jdbcType="VARCHAR"/>
+        <result property="birthday" column="birthday" jdbcType="VARCHAR"/>
+        <result property="politicalStatus" column="political_status" jdbcType="VARCHAR"/>
+        <result property="inPartyTime" column="in_party_time" jdbcType="VARCHAR"/>
+        <result property="telephone" column="telephone" jdbcType="VARCHAR"/>
+        <result property="employTimeCop" column="employ_time_cop" jdbcType="VARCHAR"/>
+        <result property="employTimeDept" column="employ_time_dept" jdbcType="VARCHAR"/>
+        <result property="major" column="major" jdbcType="VARCHAR"/>
+        <result property="team" column="team" jdbcType="VARCHAR"/>
+        <result property="professioanlTitle" column="professioanl_title" jdbcType="VARCHAR"/>
+        <result property="titleTime" column="title_time" jdbcType="VARCHAR"/>
+        <result property="designQualification" column="design_qualification" jdbcType="VARCHAR"/>
+        <result property="positionStatus" column="position_status" jdbcType="VARCHAR"/>
+        <result property="positionStartTime" column="position_start_time" jdbcType="VARCHAR"/>
+        <result property="positionEndTime" column="position_end_time" jdbcType="VARCHAR"/>
+        <result property="postTitle" column="post_title" jdbcType="VARCHAR"/>
+        <result property="tutor" column="tutor" jdbcType="VARCHAR"/>
+        <result property="orderNum" column="order_num" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="VARCHAR"/>
+        <result property="createUser" column="create_user" jdbcType="VARCHAR"/>
+        <result property="updateTime" column="update_time" jdbcType="VARCHAR"/>
+        <result property="updateUser" column="update_user" jdbcType="VARCHAR"/>
+
+        <collection property="userRoles" javaType="java.util.List" ofType="com.example.demo.entity.UserRole">
+            <!-- 定义这个集合中元素的封装规则 -->
+            <result property="userId" column="USER_ID"/>
+            <result property="roleId" column="ROLE_ID"/>
+            <result property="projectId" column="PROJECT_ID"/>
+        </collection>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="UserInfoMap">
+        select a.id,
+               a.user_num,
+               a.full_name,
+               a.gender,
+               a.nationality,
+               a.id_card,
+               a.birthday,
+               a.political_status,
+               a.in_party_time,
+               a.telephone,
+               a.employ_time_cop,
+               a.employ_time_dept,
+               a.major,
+               a.team,
+               a.professioanl_title,
+               a.title_time,
+               a.design_qualification,
+               a.position_status,
+               a.position_start_time,
+               a.position_end_time,
+               a.post_title,
+               a.tutor,
+               a.order_num,
+               a.status,
+               a.create_time,
+               a.create_user,
+               a.update_time,
+               a.update_user,
+               b.USER_ID,
+               b.ROLE_ID,
+               b.PROJECT_ID
+        from office.user_info a
+                 left join user_role b on a.id = b.USER_ID
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="UserInfoMap">
+        select id,
+               user_num,
+               full_name,
+               gender,
+               nationality,
+               id_card,
+               birthday,
+               political_status,
+               in_party_time,
+               telephone,
+               employ_time_cop,
+               employ_time_dept,
+               major,
+               team,
+               professioanl_title,
+               title_time,
+               design_qualification,
+               position_status,
+               position_start_time,
+               position_end_time,
+               post_title,
+               tutor,
+               order_num,
+               status,
+               create_time,
+               create_user,
+               update_time,
+               update_user
+        from office.user_info
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="UserInfoMap">
+        select
+        id, user_num, full_name, gender, nationality, id_card, birthday, political_status, in_party_time, telephone,
+        employ_time_cop, employ_time_dept, major, team, professioanl_title, title_time, design_qualification,
+        position_status, position_start_time, position_end_time, post_title, tutor, order_num, status, create_time,
+        create_user, update_time, update_user
+        from office.user_info
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="userNum != null and userNum != ''">
+                and user_num = #{userNum}
+            </if>
+            <if test="fullName != null and fullName != ''">
+                and full_name = #{fullName}
+            </if>
+            <if test="gender != null and gender != ''">
+                and gender = #{gender}
+            </if>
+            <if test="nationality != null and nationality != ''">
+                and nationality = #{nationality}
+            </if>
+            <if test="idCard != null and idCard != ''">
+                and id_card = #{idCard}
+            </if>
+            <if test="birthday != null and birthday != ''">
+                and birthday = #{birthday}
+            </if>
+            <if test="politicalStatus != null and politicalStatus != ''">
+                and political_status = #{politicalStatus}
+            </if>
+            <if test="inPartyTime != null and inPartyTime != ''">
+                and in_party_time = #{inPartyTime}
+            </if>
+            <if test="telephone != null and telephone != ''">
+                and telephone = #{telephone}
+            </if>
+            <if test="employTimeCop != null and employTimeCop != ''">
+                and employ_time_cop = #{employTimeCop}
+            </if>
+            <if test="employTimeDept != null and employTimeDept != ''">
+                and employ_time_dept = #{employTimeDept}
+            </if>
+            <if test="major != null and major != ''">
+                and major = #{major}
+            </if>
+            <if test="team != null and team != ''">
+                and team = #{team}
+            </if>
+            <if test="professioanlTitle != null and professioanlTitle != ''">
+                and professioanl_title = #{professioanlTitle}
+            </if>
+            <if test="titleTime != null and titleTime != ''">
+                and title_time = #{titleTime}
+            </if>
+            <if test="designQualification != null and designQualification != ''">
+                and design_qualification = #{designQualification}
+            </if>
+            <if test="positionStatus != null and positionStatus != ''">
+                and position_status = #{positionStatus}
+            </if>
+            <if test="positionStartTime != null and positionStartTime != ''">
+                and position_start_time = #{positionStartTime}
+            </if>
+            <if test="positionEndTime != null and positionEndTime != ''">
+                and position_end_time = #{positionEndTime}
+            </if>
+            <if test="postTitle != null and postTitle != ''">
+                and post_title = #{postTitle}
+            </if>
+            <if test="tutor != null and tutor != ''">
+                and tutor = #{tutor}
+            </if>
+            <if test="orderNum != null and orderNum != ''">
+                and order_num = #{orderNum}
+            </if>
+            <if test="status != null and status != ''">
+                and status = #{status}
+            </if>
+            <if test="createTime != null and createTime != ''">
+                and create_time = #{createTime}
+            </if>
+            <if test="createUser != null and createUser != ''">
+                and create_user = #{createUser}
+            </if>
+            <if test="updateTime != null and updateTime != ''">
+                and update_time = #{updateTime}
+            </if>
+            <if test="updateUser != null and updateUser != ''">
+                and update_user = #{updateUser}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into office.user_info(user_num, full_name, gender, nationality, id_card, birthday, political_status,
+                                     in_party_time, telephone, employ_time_cop, employ_time_dept, major, team,
+                                     professioanl_title, title_time, design_qualification, position_status,
+                                     position_start_time, position_end_time, post_title, tutor, order_num, status,
+                                     create_time, create_user, update_time, update_user)
+        values (#{userNum}, #{fullName}, #{gender}, #{nationality}, #{idCard}, #{birthday}, #{politicalStatus},
+                #{inPartyTime}, #{telephone}, #{employTimeCop}, #{employTimeDept}, #{major}, #{team},
+                #{professioanlTitle}, #{titleTime}, #{designQualification}, #{positionStatus}, #{positionStartTime},
+                #{positionEndTime}, #{postTitle}, #{tutor}, #{orderNum}, #{status}, #{createTime}, #{createUser},
+                #{updateTime}, #{updateUser})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update office.user_info
+        <set>
+            <if test="userNum != null and userNum != ''">
+                user_num = #{userNum},
+            </if>
+            <if test="fullName != null and fullName != ''">
+                full_name = #{fullName},
+            </if>
+            <if test="gender != null and gender != ''">
+                gender = #{gender},
+            </if>
+            <if test="nationality != null and nationality != ''">
+                nationality = #{nationality},
+            </if>
+            <if test="idCard != null and idCard != ''">
+                id_card = #{idCard},
+            </if>
+            <if test="birthday != null and birthday != ''">
+                birthday = #{birthday},
+            </if>
+            <if test="politicalStatus != null and politicalStatus != ''">
+                political_status = #{politicalStatus},
+            </if>
+            <if test="inPartyTime != null and inPartyTime != ''">
+                in_party_time = #{inPartyTime},
+            </if>
+            <if test="telephone != null and telephone != ''">
+                telephone = #{telephone},
+            </if>
+            <if test="employTimeCop != null and employTimeCop != ''">
+                employ_time_cop = #{employTimeCop},
+            </if>
+            <if test="employTimeDept != null and employTimeDept != ''">
+                employ_time_dept = #{employTimeDept},
+            </if>
+            <if test="major != null and major != ''">
+                major = #{major},
+            </if>
+            <if test="team != null and team != ''">
+                team = #{team},
+            </if>
+            <if test="professioanlTitle != null and professioanlTitle != ''">
+                professioanl_title = #{professioanlTitle},
+            </if>
+            <if test="titleTime != null and titleTime != ''">
+                title_time = #{titleTime},
+            </if>
+            <if test="designQualification != null and designQualification != ''">
+                design_qualification = #{designQualification},
+            </if>
+            <if test="positionStatus != null and positionStatus != ''">
+                position_status = #{positionStatus},
+            </if>
+            <if test="positionStartTime != null and positionStartTime != ''">
+                position_start_time = #{positionStartTime},
+            </if>
+            <if test="positionEndTime != null and positionEndTime != ''">
+                position_end_time = #{positionEndTime},
+            </if>
+            <if test="postTitle != null and postTitle != ''">
+                post_title = #{postTitle},
+            </if>
+            <if test="tutor != null and tutor != ''">
+                tutor = #{tutor},
+            </if>
+            <if test="orderNum != null and orderNum != ''">
+                order_num = #{orderNum},
+            </if>
+            <if test="status != null and status != ''">
+                status = #{status},
+            </if>
+            <if test="createTime != null and createTime != ''">
+                create_time = #{createTime},
+            </if>
+            <if test="createUser != null and createUser != ''">
+                create_user = #{createUser},
+            </if>
+            <if test="updateTime != null and updateTime != ''">
+                update_time = #{updateTime},
+            </if>
+            <if test="updateUser != null and updateUser != ''">
+                update_user = #{updateUser},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete
+        from office.user_info
+        where id = #{id}
+    </delete>
+    <update id="updateUserInfo">
+
+
+    </update>
+
+</mapper>

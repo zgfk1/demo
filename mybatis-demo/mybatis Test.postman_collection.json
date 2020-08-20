@@ -1,0 +1,185 @@
+{
+	"info": {
+		"_postman_id": "da364e93-2525-448d-a4ca-a0a69f1c7d67",
+		"name": "mybatis Test",
+		"description": "对mybatis 测试",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:9999/userRole/updateUserRole",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\":\"3153\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/userRole/updateUserRole",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"userRole",
+						"updateUserRole"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9999/userInfo/selectOne?id=3153",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9999/userInfo/selectOne?id=3153",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"userInfo",
+						"selectOne"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "3153"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9999/userInfo/selectUserInfoById?id=3153",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9999/userInfo/selectUserInfoById?id=3153",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"userInfo",
+						"selectUserInfoById"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "3153"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9999/userRole/findManyToOne?id=3153",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\":\"3153\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/userRole/findManyToOne?id=3153",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"userRole",
+						"findManyToOne"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "3153"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9999/userRole/findOneToOne",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\":\"3153\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/userRole/findOneToOne",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"userRole",
+						"findOneToOne"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9999/userInfo/insertUserInfo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userNum\":\"999888\",\r\n    \"fullName\":\"a\",\r\n    \"gender\":\"女\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/userInfo/insertUserInfo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"userInfo",
+						"insertUserInfo"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

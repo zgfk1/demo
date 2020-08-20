@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.UserRole;
 import com.example.demo.service.UserRoleService;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,5 +29,22 @@ public class UserRoleController {
         String userId1 = userId.get("userId");
         String[] split = userId1.split(",");
         return this.userRoleService.updateUserRole(Arrays.asList(split));
+    }
+
+
+    @PostMapping("findManyToOne")
+    public List<UserRole> findManyToOne(@RequestBody Map<String,String> userId) {
+        String userId1 = userId.get("userId");
+        UserRole userRole = new UserRole();
+        userRole.setUserId(userId1);
+        return this.userRoleService.findManyToOne(userRole);
+    }
+
+    @PostMapping("findOneToOne")
+    public List<UserRole> findOneToOne(@RequestBody Map<String,String> userId) {
+        String userId1 = userId.get("userId");
+        UserRole userRole = new UserRole();
+        userRole.setUserId(userId1);
+        return this.userRoleService.findOneToOne(userRole);
     }
 }

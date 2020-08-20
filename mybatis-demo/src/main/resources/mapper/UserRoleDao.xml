@@ -81,4 +81,156 @@
         </foreach>
     </update>
 
+
+    <!--多对一查询user_role 多 user_info 一 -->
+    <select id="findManyToOne" resultMap="ManyToOneMap">
+        select USER_ID,
+               ROLE_ID,
+               PROJECT_ID,
+               id,
+               user_num,
+               full_name,
+               gender,
+               nationality,
+               id_card,
+               birthday,
+               political_status,
+               in_party_time,
+               telephone,
+               employ_time_cop,
+               employ_time_dept,
+               major,
+               team,
+               professioanl_title,
+               title_time,
+               design_qualification,
+               position_status,
+               position_start_time,
+               position_end_time,
+               post_title,
+               tutor,
+               order_num,
+               status,
+               create_time,
+               create_user,
+               update_time,
+               update_user,
+               USER_ID,
+               ROLE_ID,
+               PROJECT_ID
+        from office.user_role,
+             office.user_info
+        where   USER_ID=${userId} and USER_ID =id
+    </select>
+
+    <resultMap id="ManyToOneMap" type="com.example.demo.entity.UserRole">
+        <result property="userId" column="USER_ID" jdbcType="VARCHAR"/>
+        <result property="roleId" column="ROLE_ID" jdbcType="VARCHAR"/>
+        <result property="projectId" column="PROJECT_ID" jdbcType="INTEGER"/>
+
+        <association property="userInfo"  javaType="com.example.demo.entity.UserInfo">
+            <result property="id" column="id" jdbcType="INTEGER"/>
+            <result property="userNum" column="user_num" jdbcType="VARCHAR"/>
+            <result property="fullName" column="full_name" jdbcType="VARCHAR"/>
+            <result property="gender" column="gender" jdbcType="VARCHAR"/>
+            <result property="nationality" column="nationality" jdbcType="VARCHAR"/>
+            <result property="idCard" column="id_card" jdbcType="VARCHAR"/>
+            <result property="birthday" column="birthday" jdbcType="VARCHAR"/>
+            <result property="politicalStatus" column="political_status" jdbcType="VARCHAR"/>
+            <result property="inPartyTime" column="in_party_time" jdbcType="VARCHAR"/>
+            <result property="telephone" column="telephone" jdbcType="VARCHAR"/>
+            <result property="employTimeCop" column="employ_time_cop" jdbcType="VARCHAR"/>
+            <result property="employTimeDept" column="employ_time_dept" jdbcType="VARCHAR"/>
+            <result property="major" column="major" jdbcType="VARCHAR"/>
+            <result property="team" column="team" jdbcType="VARCHAR"/>
+            <result property="professioanlTitle" column="professioanl_title" jdbcType="VARCHAR"/>
+            <result property="titleTime" column="title_time" jdbcType="VARCHAR"/>
+            <result property="designQualification" column="design_qualification" jdbcType="VARCHAR"/>
+            <result property="positionStatus" column="position_status" jdbcType="VARCHAR"/>
+            <result property="positionStartTime" column="position_start_time" jdbcType="VARCHAR"/>
+            <result property="positionEndTime" column="position_end_time" jdbcType="VARCHAR"/>
+            <result property="postTitle" column="post_title" jdbcType="VARCHAR"/>
+            <result property="tutor" column="tutor" jdbcType="VARCHAR"/>
+            <result property="orderNum" column="order_num" jdbcType="VARCHAR"/>
+            <result property="status" column="status" jdbcType="VARCHAR"/>
+            <result property="createTime" column="create_time" jdbcType="VARCHAR"/>
+            <result property="createUser" column="create_user" jdbcType="VARCHAR"/>
+            <result property="updateTime" column="update_time" jdbcType="VARCHAR"/>
+            <result property="updateUser" column="update_user" jdbcType="VARCHAR" />
+        </association>
+
+    </resultMap>
+
+    <select id="findOneToOne" resultMap="OneToOneMap">
+        select USER_ID,
+               ROLE_ID,
+               PROJECT_ID,
+               id,
+               user_num,
+               full_name,
+               gender,
+               nationality,
+               id_card,
+               birthday,
+               political_status,
+               in_party_time,
+               telephone,
+               employ_time_cop,
+               employ_time_dept,
+               major,
+               team,
+               professioanl_title,
+               title_time,
+               design_qualification,
+               position_status,
+               position_start_time,
+               position_end_time,
+               post_title,
+               tutor,
+               order_num,
+               status,
+
+               USER_ID,
+               ROLE_ID,
+               PROJECT_ID
+        from office.user_role,
+             office.user_info
+        where   USER_ID=${userId} and USER_ID =id
+    </select>
+    <resultMap id="OneToOneMap" type="com.example.demo.entity.UserRole">
+        <result property="userId" column="USER_ID" jdbcType="VARCHAR"/>
+        <result property="roleId" column="ROLE_ID" jdbcType="VARCHAR"/>
+        <result property="projectId" column="PROJECT_ID" jdbcType="INTEGER"/>
+
+        <association property="userInfo"  javaType="com.example.demo.entity.UserInfo"
+                     select="com.example.demo.dao.UserInfoDao.queryById" column="id">
+            <result property="id" column="id" jdbcType="INTEGER"/>
+            <result property="userNum" column="user_num" jdbcType="VARCHAR"/>
+            <result property="fullName" column="full_name" jdbcType="VARCHAR"/>
+            <result property="gender" column="gender" jdbcType="VARCHAR"/>
+            <result property="nationality" column="nationality" jdbcType="VARCHAR"/>
+            <result property="idCard" column="id_card" jdbcType="VARCHAR"/>
+            <result property="birthday" column="birthday" jdbcType="VARCHAR"/>
+            <result property="politicalStatus" column="political_status" jdbcType="VARCHAR"/>
+            <result property="inPartyTime" column="in_party_time" jdbcType="VARCHAR"/>
+            <result property="telephone" column="telephone" jdbcType="VARCHAR"/>
+            <result property="employTimeCop" column="employ_time_cop" jdbcType="VARCHAR"/>
+            <result property="employTimeDept" column="employ_time_dept" jdbcType="VARCHAR"/>
+            <result property="major" column="major" jdbcType="VARCHAR"/>
+            <result property="team" column="team" jdbcType="VARCHAR"/>
+            <result property="professioanlTitle" column="professioanl_title" jdbcType="VARCHAR"/>
+            <result property="titleTime" column="title_time" jdbcType="VARCHAR"/>
+            <result property="designQualification" column="design_qualification" jdbcType="VARCHAR"/>
+            <result property="positionStatus" column="position_status" jdbcType="VARCHAR"/>
+            <result property="positionStartTime" column="position_start_time" jdbcType="VARCHAR"/>
+            <result property="positionEndTime" column="position_end_time" jdbcType="VARCHAR"/>
+            <result property="postTitle" column="post_title" jdbcType="VARCHAR"/>
+            <result property="tutor" column="tutor" jdbcType="VARCHAR"/>
+            <result property="orderNum" column="order_num" jdbcType="VARCHAR"/>
+            <result property="status" column="status" jdbcType="VARCHAR"/>
+
+        </association>
+
+    </resultMap>
+
 </mapper>

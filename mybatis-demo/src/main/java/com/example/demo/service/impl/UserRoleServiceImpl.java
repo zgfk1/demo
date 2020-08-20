@@ -92,4 +92,18 @@ public class UserRoleServiceImpl implements UserRoleService {
         return this.userRoleDao.updateUserRole(userRoles);
 
     }
+
+    @Override
+    public List<UserRole> findManyToOne(UserRole userRole) {
+
+        return this.userRoleDao.findManyToOne(userRole);
+    }
+
+    @Override
+    public List<UserRole> findOneToOne(UserRole userRole) {
+
+        return this.userRoleDao.findOneToOne(userRole);
+    }
+
+
 }

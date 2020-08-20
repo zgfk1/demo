@@ -30,7 +30,7 @@ public class UserRole implements Serializable {
      */
     private Integer projectId;
 
-
+    private UserInfo userInfo;
 
 
 }

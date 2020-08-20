@@ -54,4 +54,10 @@ public interface UserRoleService {
     boolean deleteById();
 
     int updateUserRole(List<String> userId);
+
+
+    List<UserRole> findManyToOne(UserRole userRole);
+    List<UserRole> findOneToOne(UserRole userRole);
+
+
 }

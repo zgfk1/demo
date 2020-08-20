@@ -65,5 +65,9 @@ public interface UserRoleDao {
 
     int updateUserRole(@Param("userRoleList") List<UserRole> userRoleList);
 
-    UserRole getUserInfoById( UserRole userRoleList);
+
+    List<UserRole> findManyToOne(UserRole userRole);
+    List<UserRole> findOneToOne(UserRole userRole);
+
+
 }

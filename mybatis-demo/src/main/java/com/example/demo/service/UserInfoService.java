@@ -57,4 +57,7 @@ public interface UserInfoService {
     UserInfo updateUserInfo(Integer id);
 
     UserInfoUserRole selectUserInfoById(Integer id);
+
+    Object insertUserInfo(UserInfo userInfo);
+
 }

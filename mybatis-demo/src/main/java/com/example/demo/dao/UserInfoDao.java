@@ -69,4 +69,8 @@ public interface UserInfoDao {
 
 
     UserInfoUserRole selectUserInfoById(@Param("id") Integer id);
+
+    int insertUserInfo(UserInfo userInfo);
+
+
 }

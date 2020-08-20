@@ -95,4 +95,16 @@ public class UserInfoServiceImpl implements UserInfoService {
         }
         return null;
     }
+
+    @Override
+    public Object insertUserInfo(UserInfo userInfo) {
+
+
+        try {
+            return this.userInfoDao.insertUserInfo(userInfo);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

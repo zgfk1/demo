@@ -3,10 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.entity.UserInfo;
 import com.example.demo.entity.UserInfoUserRole;
 import com.example.demo.service.UserInfoService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -43,7 +40,18 @@ public class UserInfoController {
     }
 
     @GetMapping("selectUserInfoById")
-    public UserInfoUserRole selectUserInfoById(Integer id){
+    public UserInfoUserRole selectUserInfoById(Integer id) {
         return this.userInfoService.selectUserInfoById(id);
+    }
+
+    /**
+     * 有则更新 没有则添加
+     *
+     * @param userInfo 用户
+     * @return 用户
+     */
+    @PostMapping("insertUserInfo")
+    public Object insertUserInfo(@RequestBody UserInfo userInfo) {
+        return this.userInfoService.insertUserInfo(userInfo);
     }
 }

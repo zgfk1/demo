@@ -1,9 +1,11 @@
 package com.example.demo.service;
 
+import com.example.demo.entity.RtxNotification;
 import com.example.demo.entity.UserInfo;
 import com.example.demo.entity.UserInfoUserRole;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * (UserInfo)表服务接口
@@ -60,4 +62,5 @@ public interface UserInfoService {
 
     Object insertUserInfo(UserInfo userInfo);
 
+    Map<String, Object> existRtxNotification(RtxNotification rtxNotification);
 }

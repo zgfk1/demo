@@ -1,5 +1,6 @@
 package com.example.demo.dao;
 
+import com.example.demo.entity.RtxNotification;
 import com.example.demo.entity.UserInfo;
 import com.example.demo.entity.UserInfoUserRole;
 import org.apache.ibatis.annotations.Param;
@@ -73,4 +74,5 @@ public interface UserInfoDao {
     int insertUserInfo(UserInfo userInfo);
 
 
+    Map<String, Object> existRtxNotification(RtxNotification rtxNotification);
 }

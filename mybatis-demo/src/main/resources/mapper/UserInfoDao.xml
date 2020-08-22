@@ -424,4 +424,12 @@
                              full_name = #{fullName},
                              gender = #{gender}
     </insert>
+
+    <select id="existRtxNotification" resultType="java.util.Map">
+        select count(1) as `count`
+        from rtx_notification
+        where project_id = #{projectId}
+          and type = #{type}
+          and name = #{name}
+    </select>
 </mapper>

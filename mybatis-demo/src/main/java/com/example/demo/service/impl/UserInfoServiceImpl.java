@@ -1,6 +1,8 @@
 package com.example.demo.service.impl;
 
+import cn.hutool.core.collection.CollectionUtil;
 import com.example.demo.dao.UserInfoDao;
+import com.example.demo.entity.RtxNotification;
 import com.example.demo.entity.UserInfo;
 import com.example.demo.entity.UserInfoUserRole;
 import com.example.demo.service.UserInfoService;
@@ -8,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 /**
  * (UserInfo)表服务实现类
@@ -106,5 +110,18 @@ public class UserInfoServiceImpl implements UserInfoService {
             e.printStackTrace();
         }
         return null;
+    }
+
+    @Override
+    public Map<String, Object> existRtxNotification(RtxNotification rtxNotification) {
+        Map<String, Object> map = this.userInfoDao.existRtxNotification(rtxNotification);
+        if (CollectionUtil.isNotEmpty(map) && Integer.parseInt(Objects.toString(map.get("count"), "0")) != 0) {
+            //return new ResponseDTO(ResultCode.SUCCESS_CODE, "0");
+
+        } else {
+            // new ResponseDTO(ResultCode.SUCCESS_CODE, "1");
+
+        }
+        return map;
     }
 }

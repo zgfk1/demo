@@ -56,4 +56,9 @@ public class TemplateMailStrategy implements MailStrategy {
             log.error("发送模板邮件【{}】时发生异常！", mail.getTemplateName());
         }
     }
+
+    @Override
+    public void sendMail(Mail mail) {
+
+    }
 }

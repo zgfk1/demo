@@ -44,4 +44,9 @@ public class HtmlMailStrategy implements MailStrategy {
             log.error("发送html邮件时发生异常！", e);
         }
     }
+
+    @Override
+    public void sendMail(Mail mail) {
+
+    }
 }

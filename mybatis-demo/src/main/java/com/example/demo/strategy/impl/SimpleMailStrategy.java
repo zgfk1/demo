@@ -10,7 +10,10 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Component;
+
+import java.util.Objects;
 
 /**
  * @Description: 简单文本发送邮件
@@ -30,6 +33,22 @@ public class SimpleMailStrategy implements MailStrategy {
         SimpleMailMessage message = new SimpleMailMessage();
         try {
             message.setFrom(from);
+            message.setTo(mail.getTo());
+            message.setSubject(mail.getTitle());
+            message.setText(mail.getContent());
+            javaMailSender.send(message);
+            log.info("纯文本的邮件已经发送给【{}】。", mail.getTo());
+        } catch (Exception e) {
+            log.error("纯文本邮件发送时发生异常！", e);
+        }
+    }
+
+    @Override
+    public void sendMail(Mail mail) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        try {
+            JavaMailSenderImpl javaMailSenderImpl=(JavaMailSenderImpl)javaMailSender;
+            message.setFrom(Objects.requireNonNull(javaMailSenderImpl.getUsername()));
             message.setTo(mail.getTo());
             message.setSubject(mail.getTitle());
             message.setText(mail.getContent());

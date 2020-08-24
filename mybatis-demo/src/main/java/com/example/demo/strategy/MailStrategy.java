@@ -18,5 +18,6 @@ public interface MailStrategy {
      * @param mail：邮件信息
      */
     void sendMail(String from, Mail mail);
+    void sendMail( Mail mail);
 
 }

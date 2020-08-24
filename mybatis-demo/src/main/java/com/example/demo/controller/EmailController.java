@@ -8,6 +8,7 @@ import com.example.demo.service.UserInfoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -52,7 +53,7 @@ public class EmailController {
     @PostMapping("sedEmailMailBiz")
     public void sedEmailMailBiz(@RequestBody JSONObject data) {
 
-        mailBiz.contentType(MailContentTypeEnum.TEXT).content("技术分享").title("程序新视界").to("1421504642@qq.com").send();
+        mailBiz.contentType(MailContentTypeEnum.TEXT).content("技术分享11").title("程序新视界11111").to("1421504642@qq.com").send();
     }
 
 

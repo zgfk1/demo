@@ -8,6 +8,13 @@ server:
   servlet:
     context-path: /
 spring:
+  # 邮箱服务器地址
+  mail:
+    host: smtp.qq.com
+    username: 1421504642@qq.com
+    password: mbsaflnrrnwefiea
+    default-encoding: UTF-8
+
   profiles: dev
   application:
     name: sedin-external-spring-boot

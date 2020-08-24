@@ -19,4 +19,6 @@ public class RtxServerProperties {
     private String url;
 
     private String title;
+
+    private Boolean test;
 }

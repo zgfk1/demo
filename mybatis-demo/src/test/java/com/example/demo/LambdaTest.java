@@ -1,9 +1,6 @@
 package com.example.demo;
 
 
-import cn.minsin.pinyin.function.PinyinFunctions;
-import cn.minsin.pinyin.model.PinyinResult;
-import net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat;
 import org.junit.Test;
 
 import java.util.*;
@@ -80,13 +77,6 @@ public class LambdaTest {
         ArrayList<Object> objects = new ArrayList<>();
         result2.forEach(k-> System.out.println("stream 过滤之后:"+k));
         System.out.println("stream 过滤之后:" + result2);
-    }
-
-    @Test
-    public void getPinYin() {
-        HanyuPinyinOutputFormat hanyuPinyinOutputFormat = new HanyuPinyinOutputFormat();
-        PinyinResult zhangSan = PinyinFunctions.parseChineseStr("张三", hanyuPinyinOutputFormat);
-        System.out.println(zhangSan.getSource());
     }
 
 

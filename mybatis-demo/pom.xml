@@ -13,6 +13,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <spring-boot.version>2.2.7.RELEASE</spring-boot.version>
+        <pinyin.version>2.5.1</pinyin.version>
     </properties>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -111,7 +112,13 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
+        <!--借助pinyin4j将汉字转拼音的相关帮助类，进行了二次封装.-->
 
+        <dependency>
+            <groupId>com.belerweb</groupId>
+            <artifactId>pinyin4j</artifactId>
+            <version>${pinyin.version}</version>
+        </dependency>
 
     </dependencies>
 

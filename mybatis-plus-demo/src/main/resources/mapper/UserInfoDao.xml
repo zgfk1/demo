@@ -41,7 +41,7 @@
     </resultMap>
 
     <!--查询单个-->
-    <select id="queryById" resultMap="UserInfoMap">
+    <select id="queryById" resultMap="UserInfoMap" resultType="com.mybatisplus.demo.entity.UserInfo">
         select a.id,
                a.user_num,
                a.full_name,
@@ -392,7 +392,7 @@
         <result property="updateUser" column="update_user" jdbcType="VARCHAR"/>
 
         <collection property="userRoles" ofType="com.mybatisplus.demo.entity.UserRole"
-                    select="com.example.demo.dao.UserRoleDao.queryById" column="id">
+                    select="com.mybatisplus.demo.dao.UserRoleDao.queryById" column="id">
             <!-- 定义这个集合中元素的封装规则 -->
             <result property="userId" column="USER_ID"/>
             <result property="roleId" column="ROLE_ID"/>

@@ -24,6 +24,10 @@ public interface UserInfoService {
      */
     UserInfo queryById(Integer id);
 
+
+    Map queryById1(Integer id);
+
+
     /**
      * 查询多条数据
      *

@@ -79,6 +79,40 @@
           and a.gender = '女'
     </select>
 
+    <select id="queryById1" resultType="map">
+        select a.id,
+               a.user_num,
+               a.full_name,
+               a.gender,
+               a.nationality,
+               a.id_card,
+               a.birthday,
+               a.political_status,
+               a.in_party_time,
+               a.telephone,
+               a.employ_time_cop,
+               a.employ_time_dept,
+               a.major,
+               a.team,
+               a.professioanl_title,
+               a.title_time,
+               a.design_qualification,
+               a.position_status,
+               a.position_start_time,
+               a.position_end_time,
+               a.post_title,
+               a.tutor,
+               a.order_num,
+               a.status,
+               a.create_time,
+               a.create_user,
+               a.update_time,
+               a.update_user
+
+        from office.user_info a
+        where id = #{id}
+    </select>
+
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="UserInfoMap">
         select id,

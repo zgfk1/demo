@@ -6,6 +6,7 @@ import com.mybatisplus.demo.service.UserInfoService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.Map;
 
 /**
  * (UserInfo)表控制层
@@ -31,6 +32,11 @@ public class UserInfoController {
     @GetMapping("selectOne")
     public UserInfo selectOne(Integer id) {
         return this.userInfoService.queryById(id);
+    }
+
+    @GetMapping("selectOne1")
+    public Map selectOne1(Integer id) {
+        return this.userInfoService.queryById1(id);
     }
 
 

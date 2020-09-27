@@ -75,6 +75,7 @@
     </delete>
     <!--批量修改-->
     <update id="updateUserRole">
+
         <foreach close="" collection="userRoleList" index="index" item="item" open="" separator=";">
             UPDATE user_role SET ROLE_ID = #{item.roleId}
             WHERE USER_ID = #{item.userId}
@@ -205,7 +206,7 @@
         <result property="projectId" column="PROJECT_ID" jdbcType="INTEGER"/>
 
         <association property="userInfo" javaType="com.mybatisplus.demo.entity.UserInfo"
-                     select="com.example.demo.dao.UserInfoDao.queryById" column="id">
+                     select="com.mybatisplus.demo.dao.UserInfoDao.queryById" column="id">
             <result property="id" column="id" jdbcType="INTEGER"/>
             <result property="userNum" column="user_num" jdbcType="VARCHAR"/>
             <result property="fullName" column="full_name" jdbcType="VARCHAR"/>

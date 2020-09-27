@@ -35,6 +35,11 @@ public class UserInfoServiceImpl implements UserInfoService {
         return this.userInfoDao.queryById(id);
     }
 
+    @Override
+    public Map queryById1(Integer id) {
+        return this.userInfoDao.queryById1(id);
+    }
+
     /**
      * 查询多条数据
      *

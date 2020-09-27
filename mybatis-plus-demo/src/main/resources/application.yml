@@ -8,6 +8,8 @@ server:
   servlet:
     context-path: /
 spring:
+  profiles: dev
+
   # 邮箱服务器地址
   mail:
     host: smtp.qq.com
@@ -15,7 +17,6 @@ spring:
     password: mbsaflnrrnwefiea
     default-encoding: UTF-8
 
-  profiles: dev
   application:
     name: sedin-external-spring-boot
   datasource:
@@ -42,7 +43,7 @@ spring:
         session-stat-max-count: 1000
       filter:
         slf4j:
-          enabled: true
+          enabled: false
           result-set-log-enabled: false
           statement-create-after-log-enabled: false
           statement-close-after-log-enabled: false
@@ -51,9 +52,33 @@ spring:
           result-set-log-error-enabled: false
           result-set-next-after-log-enabled: false
 
+  gson:
+    #    是否序列化空值
+    serialize-nulls: off
+    #    禁用html转义
+    disable-html-escaping: true
+    #    日期格式
+    date-format: yyyy-MM-dd hh:mm:ss
+    #    禁用内部类的序列化
+    disable-inner-class-serialization: true
+    #    启用复杂映射键序列化
+    enable-complex-map-key-serialization: true
+    #    排除没有注释的字段
+    exclude-fields-without-expose-annotation: true
+    #    现场命名策略
+    field-naming-policy: identity
+    #    生成不可执行的json
+    generate-non-executable-json: true
+    #    宽容
+    lenient: true
+    #    长期串行化政策
+    long-serialization-policy: string
+    #    漂亮印刷
+    pretty-printing: true
+
 logging:
   level:
-    com.burst.sedin.mapper: DEBUG
+    com.burst.sedin: DEBUG
     jdbc.sqltiming: DEBUG
 mybatis-plus:
   configuration:

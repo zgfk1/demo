@@ -24,6 +24,8 @@ public interface UserInfoDao {
      */
     UserInfo queryById(Integer id);
 
+    Map queryById1(Integer id);
+
     /**
      * 查询指定行数据
      *

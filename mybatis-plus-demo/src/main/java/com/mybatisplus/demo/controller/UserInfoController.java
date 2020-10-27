@@ -17,6 +17,17 @@ import java.util.Map;
 @RestController
 @RequestMapping("userInfo")
 public class UserInfoController {
+
+    /**
+     * 测试异常
+     *
+     * @return 单条数据
+     */
+    @GetMapping("testException")
+    public String testException() {
+        return this.userInfoService.testException();
+    }
+
     /**
      * 服务对象
      */

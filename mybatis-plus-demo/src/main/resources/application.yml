@@ -28,7 +28,10 @@ spring:
       password: root
       timeBetweenEvictionRunsMillis: 60000
       minEvictableIdleTimeMillis: 30000
-      filters: stat,wall,log4j2
+      validation-query: SELECT 1 #对于数据库连接的检测
+      test-while-idle: true #如果空闲时间大于time-between-eviction-runs-millis 使用validation-query检测连接是否有效，无效则淘汰
+      test-on-borrow: false #申请连接时检测连接是否有效 影响性能关闭
+      filters: stat,wall,config
       ##### WebStatFilter配置 #######
       web-stat-filter:
         #启用StatFilter
@@ -42,15 +45,26 @@ spring:
         #缺省sessionStatMaxCount是1000个
         session-stat-max-count: 1000
       filter:
-        slf4j:
-          enabled: false
+#        slf4j:
+#          enabled: true
+#          result-set-log-enabled: false
+#          statement-create-after-log-enabled: false
+#          statement-close-after-log-enabled: false
+#          result-set-open-after-log-enabled: false
+#          result-set-close-after-log-enabled: false
+#          result-set-log-error-enabled: false
+#          result-set-next-after-log-enabled: false
+        log4j2:
+          statement-sql-pretty-format: false
+          enabled: true
           result-set-log-enabled: false
           statement-create-after-log-enabled: false
-          statement-close-after-log-enabled: false
+          statement-close-after-log-enabled: true
           result-set-open-after-log-enabled: false
-          result-set-close-after-log-enabled: false
+          result-set-close-after-log-enabled: true
           result-set-log-error-enabled: false
           result-set-next-after-log-enabled: false
+
 
   gson:
     #    是否序列化空值

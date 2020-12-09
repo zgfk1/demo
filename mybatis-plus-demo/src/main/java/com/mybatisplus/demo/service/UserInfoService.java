@@ -68,4 +68,7 @@ public interface UserInfoService {
     Object insertUserInfo(UserInfo userInfo);
 
     Map<String, Object> existRtxNotification(RtxNotification rtxNotification);
+
+    String testException();
+
 }

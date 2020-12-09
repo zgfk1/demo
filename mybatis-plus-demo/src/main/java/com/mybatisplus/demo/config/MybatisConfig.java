@@ -5,11 +5,9 @@ import com.baomidou.mybatisplus.core.MybatisConfiguration;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.client.RestTemplate;
 
 /**
- * @描述: mybatis配置类
- * @作者: 任琳珺
- * @时间: 2018/11/19 18:28
  */
 @Configuration
 @MapperScan("com.mybatisplus.demo.dao")
@@ -22,5 +20,11 @@ public class MybatisConfig {
                 configuration.setObjectWrapperFactory(new MapWrapperFactory());
             }
         };
+    }
+
+
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
     }
 }

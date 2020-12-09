@@ -1,11 +1,13 @@
 package com.mybatisplus.demo.service.impl;
 
 import cn.hutool.core.collection.CollectionUtil;
+import com.mybatisplus.demo.config.ExceptionLogUtils;
 import com.mybatisplus.demo.dao.UserInfoDao;
 import com.mybatisplus.demo.entity.RtxNotification;
 import com.mybatisplus.demo.entity.UserInfo;
 import com.mybatisplus.demo.entity.UserInfoUserRole;
 import com.mybatisplus.demo.service.UserInfoService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -19,6 +21,7 @@ import java.util.Objects;
  * @author zgf
  * @since 2020-08-18 17:21:38
  */
+@Slf4j
 @Service("userInfoService")
 public class UserInfoServiceImpl implements UserInfoService {
     @Resource
@@ -128,5 +131,17 @@ public class UserInfoServiceImpl implements UserInfoService {
 
         }
         return map;
+    }
+
+    @Override
+    public String testException() {
+
+        try {
+            int i=1/0;
+        } catch (Exception e) {
+            //e.printStackTrace();
+            ExceptionLogUtils.log(e,log);
+        }
+        return null;
     }
 }
